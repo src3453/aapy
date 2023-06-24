@@ -1,2 +1,2 @@
 # AAPy
-### Image to ASCII art converter written in Python
+### Image to ASCII/Terminal art converter written in Python

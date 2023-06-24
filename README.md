@@ -1,2 +1,2 @@
 # AAPy
-NDArray to ASCII art converter
+### NDArray to ASCII art converter

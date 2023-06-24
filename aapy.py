@@ -8,7 +8,7 @@ CMODE_CONTINUOUS = False
 class color:
     def __init__(self) -> None:
         pass
-    def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),char:str="██",chrmode:bool=True,chrrepl:int=2) -> None:
+    def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),char:str="██",chrmode:bool=CMODE_ONLYONE,chrrepl:int=2) -> None:
         char_tmp = ""
         print(f"\033[{loc[0]};{loc[1]}H",end="")
         i=0
@@ -34,5 +34,6 @@ class gray:
         chrs = np.array(list(self.chars))[tmp.astype(np.int0)]
         for y in range(img.shape[0]):
             for x in range(img.shape[1]):
-                print(f"{chrs[y,x]}",end="")
+                for i in range(chrrepl):    
+                    print(f"{chrs[y,x]}",end="")
             print()

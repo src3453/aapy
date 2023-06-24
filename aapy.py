@@ -29,7 +29,8 @@ class gray:
         self.chars=" .,:;+*?%$#@"
     def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),chrrepl:int=2):
         print(f"\033[{loc[0]};{loc[1]}H",end="")
-        tmp=img[:,:,0]//(256/len(self.chars))
+        tmp = np.average(img,2)
+        tmp=tmp//(256/len(self.chars))
         chrs = np.array(list(self.chars))[tmp.astype(np.int0)]
         for y in range(img.shape[0]):
             for x in range(img.shape[1]):

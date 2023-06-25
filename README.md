@@ -1,2 +1,2 @@
 # AAPy
-### NDArray to ASCII art converter
+### Image to ASCII/Terminal art converter written in Python

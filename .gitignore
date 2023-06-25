@@ -1,2 +1,5 @@
 __pycache__
 make_char_list.py
+*.tmp
+ipaexg.ttf
+*.ttf

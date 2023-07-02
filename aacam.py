@@ -1,10 +1,10 @@
+import sys
 import aapy as aa
 import cv2
 import numpy as np
 import os
 from datetime import datetime
-import unicodedata
-
+import dither
 
 
 # Webカメラを使うときはこちら
@@ -13,10 +13,10 @@ avg = None
 
 os.system("clear")
 est=0
-printer = aa.gray()
+printer = eval(sys.argv[1])
 #printer.chars = r" ▘▀▚▛█"
     # ░▒▓█ 
-    # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█
+    # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█
     # ▁▂▃▄▅▆▇█
     # .-:=+*#%@
     # ▏▎▍▌▋▊▉█
@@ -24,7 +24,7 @@ printer = aa.gray()
     #  ⡀⠈⡐⠡⡘⡙⡛⣾⣿▒▓█
     # ´-²;º=\LzïY[j1kéñü6Søq©AKÈRNÒÂÕ¶ / Latin-1
 
-    #printer.chars=["  ","▚ "," ▚","▚▚","█▚","▚█","██"]
+#printer.chars=["▓ ▓ ","▓▒▒▓","▓▒▓▒","▓▒▓▓","▓▓▓▓","▓▓▓▓","█▓█▓","▓█▓█","██▓█","████"]
 
 
 while True:
@@ -35,8 +35,7 @@ while True:
 #Place code here
     REPL = 2
     termsize = os.get_terminal_size()
-    
-    dst = cv2.resize(frame,(termsize[0],min(int(termsize[0]/(16/9)/REPL),termsize[1])-1),interpolation=cv2.INTER_NEAREST)
+    dst = cv2.resize(frame,(termsize[0]//len(" "),min(int(termsize[0]/(16/9)/REPL),termsize[1])-1),interpolation=cv2.INTER_NEAREST)
     
     print(f"{est}fps",end="\r")
     pre = datetime.now()

@@ -8,12 +8,15 @@ import dither
 
 
 # Webカメラを使うときはこちら
-cap = cv2.VideoCapture(0)
+if len(sys.argv) == 1:
+    cap = cv2.VideoCapture(0)
+else:
+    cap = cv2.VideoCapture(sys.argv[1])
 avg = None
 
 os.system("clear")
 est=0
-printer = eval(sys.argv[1])
+printer = aa.color_full()
 #printer.chars = r" ░▒▓█"
     # ░▒▓█ 
     # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█

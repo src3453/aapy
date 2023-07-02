@@ -14,7 +14,7 @@ avg = None
 os.system("clear")
 est=0
 printer = eval(sys.argv[1])
-#printer.chars = r" ▘▀▚▛█"
+#printer.chars = r" ░▒▓█"
     # ░▒▓█ 
     # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█
     # ▁▂▃▄▅▆▇█

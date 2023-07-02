@@ -16,7 +16,7 @@ avg = None
 
 os.system("clear")
 est=0
-printer = aa.color_full()
+printer = aa.gray.dither_bin()
 #printer.chars = r" ░▒▓█"
     # ░▒▓█ 
     # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█

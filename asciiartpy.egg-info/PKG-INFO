@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: asciiartpy
+Version: 0.1.0
+Summary: This package provides an ASCII art generator.
+Home-page: https://github.com/src3453/aapy
+Author: src3453
+Author-email: info@example.com
+License: BSD-3-Clause
+Keywords: ascii,aapy
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+
+# AAPy
+### Image to ASCII/Terminal art converter written in Python

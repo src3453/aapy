@@ -1,0 +1,10 @@
+README.rst
+setup.py
+asciiartpy/__init__.py
+asciiartpy/aapy.py
+asciiartpy/dither.py
+asciiartpy.egg-info/PKG-INFO
+asciiartpy.egg-info/SOURCES.txt
+asciiartpy.egg-info/dependency_links.txt
+asciiartpy.egg-info/requires.txt
+asciiartpy.egg-info/top_level.txt

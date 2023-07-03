@@ -36,3 +36,31 @@ class binary:
                     else:
                         gray[i][j] = 255
             return gray
+class multi:
+    def __init__(self) -> None:
+        pass
+    def dither(self,img, level):
+        width, height = img.shape
+        dst = np.zeros_like(img)
+        ods = []
+        for i in range(level):
+            v0 = (256 * i) // level
+            v1 = (256 * (i + 1)) // level
+            vrange = v1 - v0
+            ods.append([v0,v1])
+        #print(v0,v1)
+        error = 0
+        src = img.copy()
+        for v0,v1 in ods:
+            for y in range(height):
+                for x in range(width):
+                    v = src[x, y]
+                    if v0 <= v and v <= v1:
+                        if v+error < (v1+v0)//2:
+                            error = img[x,y] + error - v0
+                            dst[x,y] = v0
+                        else:
+                            error = img[x,y] + error - v1
+                            dst[x,y] = v1
+    
+        return dst

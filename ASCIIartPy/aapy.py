@@ -2,7 +2,7 @@
 AAPy provides color ASCII art generator."""
 import numpy as np
 import cv2
-from .dither import binary as dit
+from . import dither as dit
 
 CMODE_ONLYONE = True
 CMODE_CONTINUOUS = False
@@ -74,7 +74,24 @@ class gray:
         def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),chrrepl:int=2):
             print(f"\033[{loc[0]};{loc[1]}H",end="")
             tmp = np.average(img,2)
-            tmp = dit().dither(tmp,self.algo)
+            tmp = dit.binary().dither(tmp,self.algo)
+            tmp=tmp//(256/len(self.chars))
+            chrs = np.array(list(self.chars))[tmp.astype(np.int0)]
+            for y in range(0,img.shape[0]):
+                for x in range(img.shape[1]):
+                    for i in range(chrrepl):    
+                        print(f"{chrs[y%chrs.shape[0],x%chrs.shape[1]]}",end="")
+                print()
+    class dither:
+        def __init__(self,K=len(CHARS),algo=0) -> None:
+            self.chars = CHARS
+            self.algo = algo
+            self.k = K
+
+        def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),chrrepl:int=2):
+            print(f"\033[{loc[0]};{loc[1]}H",end="")
+            tmp = np.average(img,2)
+            tmp = dit.multi().dither(tmp,self.k)
             tmp=tmp//(256/len(self.chars))
             chrs = np.array(list(self.chars))[tmp.astype(np.int0)]
             for y in range(0,img.shape[0]):

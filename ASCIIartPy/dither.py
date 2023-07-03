@@ -4,6 +4,7 @@ from numba import jit
 
 ALGO_FLOYD_STEINBERG = 0
 ALGO_BAYER = 1
+ALGO_FLOYD_STEINBERG_2D = 2
 class binary:
     def __init__(self) -> None:
         pass
@@ -141,6 +142,6 @@ class multi:
                                 dst[x,y] = v0
                             else:
                                 dst[x,y] = v1
-        
         return dst
+    
     #@jit(nopython=False)

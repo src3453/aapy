@@ -18,7 +18,7 @@ os.system("clear")
 est=0
 printer = eval(args.method)
     
-#printer.chars = r" ░▒▓█"
+printer.chars = r" ░▒▓█"
     # ░▒▓█ 
     # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█
     # ▁▂▃▄▅▆▇█

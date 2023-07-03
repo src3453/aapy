@@ -12,9 +12,9 @@ def getNearestIndex(lst, num):
     return idx
 
 class color_full:
-    def __init__(self) -> None:
-        pass
-    def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),char:str="█",chrmode:bool=CMODE_ONLYONE,chrrepl:int=1) -> None:
+    def __init__(self,char:str="@") -> None:
+        self.char:str=char
+    def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),chrmode:bool=CMODE_ONLYONE,chrrepl:int=1) -> None:
         char_tmp = ""
         print(f"\033[{loc[0]};{loc[1]}H",end="")
         i=0
@@ -22,11 +22,11 @@ class color_full:
             for x in range(img.shape[1]):
                 #global char_tmp
                 if chrmode:
-                    char_tmp = char
+                    char_tmp = self.char
                 else:
                     char_tmp=""
                     for j in range(chrrepl):
-                        char_tmp += char[i%len(char)]
+                        char_tmp += self.char[i%len(self.char)]
                         i+=1
                 print(f"\033[38;2;{img[y,x,2]};{img[y,x,1]};{img[y,x,0]}m{char_tmp}\033[0m",end="")
             print()

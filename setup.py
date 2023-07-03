@@ -5,7 +5,7 @@ from codecs import open
 from os import path
 import re
 
-package_name = "ASCIIartPy"
+package_name = "asciiartpy"
 
 root_dir = path.abspath(path.dirname(__file__))
 

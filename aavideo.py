@@ -1,22 +1,23 @@
+import argparse
 import sys
-import aapy as aa
+import ASCIIartPy.aapy as aa
 import cv2
 import numpy as np
 import os
 from datetime import datetime
-import dither
+import ASCIIartPy.dither
 
-
+parser = argparse.ArgumentParser(description='このプログラムの説明（なくてもよい）')    # 2. パーサを作る
+parser.add_argument('-p',"--path", help='', default=0)    # 必須の引数を追加
+parser.add_argument('-m',"--method", help='', default="aa.gray.dither_bin()")    # 必須の引数を追加
+args = parser.parse_args()
 # Webカメラを使うときはこちら
-if len(sys.argv) == 1:
-    cap = cv2.VideoCapture(0)
-else:
-    cap = cv2.VideoCapture(sys.argv[1])
-avg = None
+cap = cv2.VideoCapture(args.path)
 
 os.system("clear")
 est=0
-printer = aa.gray.dither_bin()
+printer = eval(args.method)
+    
 #printer.chars = r" ░▒▓█"
     # ░▒▓█ 
     # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█

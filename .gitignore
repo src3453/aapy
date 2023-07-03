@@ -3,3 +3,6 @@ make_char_list.py
 *.tmp
 ipaexg.ttf
 *.ttf
+build/
+dist/
+asciiartpy.egg_info/*

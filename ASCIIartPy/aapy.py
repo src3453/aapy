@@ -35,6 +35,7 @@ CHARS=" .-:=+*?#&%@$"
 CHARS_BIN=" @"
 
 class color_std:
+    """Could not used! Under development."""
     def __init__(self) -> None:
         self.chars = CHARS
     def print(self,img:np.ndarray,loc:tuple[int,int]=(0,0),chrrepl:int=1):

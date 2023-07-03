@@ -6,3 +6,5 @@ ipaexg.ttf
 build/
 dist/
 asciiartpy.egg_info/*
+test.py
+setup.py

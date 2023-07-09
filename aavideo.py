@@ -9,7 +9,8 @@ import ASCIIartPy.dither
 
 parser = argparse.ArgumentParser(description='このプログラムの説明（なくてもよい）')    # 2. パーサを作る
 parser.add_argument('-p',"--path", help='', default=0)    # 必須の引数を追加
-parser.add_argument('-m',"--method", help='', default="aa.gray.dither_bin()")    # 必須の引数を追加
+parser.add_argument('-m',"--method", help='', default="aa.gray.dither_bin()")  
+parser.add_argument('-c',"--chars", help='', default=" .-:=+*#%@")    # 必須の引数を追加
 args = parser.parse_args()
 # Webカメラを使うときはこちら
 cap = cv2.VideoCapture(args.path)
@@ -18,7 +19,7 @@ os.system("clear")
 est=0
 printer = eval(args.method)
     
-printer.chars = r" ░▒▓█"
+printer.chars = args.chars
     # ░▒▓█ 
     # ▘▖▝▗▀▄▚▞▐▋▛▙▜▟█ /  ▘▀▚▛█
     # ▁▂▃▄▅▆▇█
@@ -43,7 +44,7 @@ while True:
     
     print(f"{est}fps",end="\r")
     pre = datetime.now()
-    printer.print(dst,chrrepl=1)
+    print(printer.print(dst,chrrepl=1),end="")
     est = int(1/(datetime.now()-pre).total_seconds())
     #cv2.imshow("Main", dst)
     key = cv2.waitKey(10)

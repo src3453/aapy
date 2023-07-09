@@ -26,14 +26,15 @@ class binary:
         if algo == ALGO_BAYER:
             gray=cv2.resize(gray,dsize=None,fx=1,fy=1)
             height, width = gray.shape
-            matrix = [[0, 8, 2, 10],[12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
-            for i in range(4):
-                for j in range(4):
-                    matrix[i][j] = matrix[i][j] * 16
+            #matrix = [[0, 8, 2, 10],[12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
+            matrix = [[1, 3],[4, 2]]
+            for i in range(2):
+                for j in range(2):
+                    matrix[i][j] = matrix[i][j] * 51.2
 
             for i in range(height):
                 for j in range(width):
-                    if gray[i][j] < matrix[i % 4][j % 4]: # 4区切りずつ判定する
+                    if gray[i][j] < matrix[i % 2][j % 2]: # 4区切りずつ判定する
                         gray[i][j] = 0
                         
                     else:
@@ -71,12 +72,12 @@ class multi:
     [16, 48, 8, 40, 14, 46, 6, 38],
     [64, 32, 56, 24, 62, 30, 54, 22]
 ]
-        self.odtbls = {
-    "2x2":  [5, odtbl2x2],
-    "3x3":  [10, odtbl3x3],
-    "3x3_b":[10, odtbl3x3_b],
-    "4x4":  [17, odtbl4x4],
-    "8x8":  [65, odtbl8x8]
+        self.odtbls = {       # MaxK
+    "2x2":  [5, odtbl2x2],    # 51.2
+    "3x3":  [10, odtbl3x3],   # 25.6
+    "3x3_b":[10, odtbl3x3_b], # 25.6
+    "4x4":  [17, odtbl4x4],   # 15.05
+    "8x8":  [65, odtbl8x8]    #  3.93
 }
     
     class InvalidOrderTypeException(BaseException):
@@ -99,7 +100,9 @@ class multi:
     
         return w, h, odtbl
     def dither(self,img,level,algo=ALGO_FLOYD_STEINBERG,order="3x3"):
-        """orders: 2x2, 3x3, 3x3_b, 4x4, 8x8"""
+        """
+        orders: 2x2, 3x3, 3x3_b, 4x4, 8x8
+        MaxK:   51.2 25.6 25.6 15.0 3.93"""
         odtype = order
         width, height = img.shape
         dst = np.zeros(img.shape)

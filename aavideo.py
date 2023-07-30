@@ -40,11 +40,11 @@ while True:
 #Place code here
     REPL = 2
     termsize = os.get_terminal_size()
-    dst = cv2.resize(frame,(termsize[0]//len(" "),min(int(termsize[0]/(16/9)/REPL),termsize[1])-1),interpolation=cv2.INTER_NEAREST)
+    dst = cv2.resize(frame,(termsize[0]//len(" "),(min(int(termsize[0]/(16/9)/REPL),termsize[1])-1)),interpolation=cv2.INTER_NEAREST)
     
-    print(f"{est}fps",end="\r")
+    print(f"{est}fps",end="\033[0m\r")
     pre = datetime.now()
-    print(printer.print(dst,chrrepl=1),end="")
+    print(printer.print(dst,chrrepl=1)+"\033[0m",end="")
     est = int(1/(datetime.now()-pre).total_seconds())
     #cv2.imshow("Main", dst)
     key = cv2.waitKey(10)

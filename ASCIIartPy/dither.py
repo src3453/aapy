@@ -99,7 +99,7 @@ class multi:
                 odtbl[y][x] = tbl[y][x] * vrange / d + ofs
     
         return w, h, odtbl
-    def dither(self,img,level,algo=ALGO_FLOYD_STEINBERG,order="3x3"):
+    def dither(self,img,level,algo=ALGO_FLOYD_STEINBERG,order="3x3")->np.ndarray[np.float64]:
         """
         orders: 2x2, 3x3, 3x3_b, 4x4, 8x8
         MaxK:   51.2 25.6 25.6 15.0 3.93"""
@@ -147,4 +147,7 @@ class multi:
                                 dst[x,y] = v1
         return dst
     
+    
+    
     #@jit(nopython=False)
+    

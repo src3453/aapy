@@ -1,6 +1,0 @@
-exclude *.tmp
-exclude *.ttf
-exclude make_char_list.py
-include README.md
-include LICENCE
-exclude .gitignore
